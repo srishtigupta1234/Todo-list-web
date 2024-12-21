@@ -1,0 +1,131 @@
+/* General Reset */
+body, h3, p, div, button, input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f3e6f8, #d5c6e0);
+    color: #4b2e83;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Input Section */
+div:first-of-type {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+input#todo {
+    width: 300px;
+    padding: 10px 15px;
+    border: 2px solid #b794d4;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+input#todo:focus {
+    border-color: #6b238e;
+}
+
+button#add_todo {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background: #9d4edd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button#add_todo:hover {
+    background: #72147e;
+}
+
+/* Task Container */
+#box {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Individual Task */
+#box > div {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#box > div:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#box h3 {
+    font-size: 1.2rem;
+    color: #4b2e83;
+    margin-bottom: 5px;
+}
+
+#box p {
+    font-size: 0.9rem;
+    color: #6b238e;
+}
+
+/* Buttons in Task */
+#box button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+#box button:nth-child(3) {
+    background: #6c63ff;
+    color: #fff;
+}
+
+#box button:nth-child(3):hover {
+    background: #4b4ee6;
+}
+
+#box button:nth-child(4) {
+    background: #ff6584;
+    color: #fff;
+}
+
+#box button:nth-child(4):hover {
+    background: #d95473;
+}
+
+#box button:nth-child(5) {
+    background: #f64f59;
+    color: #fff;
+}
+
+#box button:nth-child(5):hover {
+    background: #c13b45;
+}
