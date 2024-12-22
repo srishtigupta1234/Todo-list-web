@@ -39,6 +39,7 @@ let renderDom = (data)=>{
      div.append(h3,p,toggle,update,remove)
      box.append(div)
    }); 
+  
 }
 let UpdateItem = async(id)=>{
         let todo = await fetch(`http://localhost:3000/api/todo/${id}`);
@@ -98,6 +99,76 @@ let DeleteItem = async(id) =>{
    getData();
  
 }
+let sortByTitle=async()=>{
+   let res = await fetch(`http://localhost:3000/api/todo?_sort=title&_order=asc`)
+   res = await res.json();
+   renderDom(res)
+}
+// Function to display pagination buttons
+let totalPages = 30; // Total number of pages (example)
+let visibleButtons = 5; // Number of buttons to display at a time
+let currentPage = 1; // Keep track of the current page
+
+// Function to show pagination buttons
+function showButtons() {
+    let buttons_div = document.getElementById('buttons');
+    buttons_div.innerHTML = null;
+
+    // Determine the range of buttons to show
+    let start = Math.max(1, currentPage - Math.floor(visibleButtons / 2));
+    let end = Math.min(totalPages, start + visibleButtons - 1);
+
+    // Adjust start if at the end of the range
+    start = Math.max(1, end - visibleButtons + 1);
+
+    // Add "First" button
+    if (currentPage > 1) {
+        let firstBtn = document.createElement('button');
+        firstBtn.innerText = "<< First";
+        firstBtn.onclick = () => goToPage(1);
+        buttons_div.append(firstBtn);
+    }
+
+    // Add page buttons
+    for (let i = start; i <= end; i++) {
+        let btn = document.createElement('button');
+        btn.innerText = i;
+        btn.setAttribute("id", `btn-${i}`);
+        btn.className = i === currentPage ? "active" : ""; // Highlight the current page
+        btn.onclick = () => goToPage(i);
+        buttons_div.append(btn);
+    }
+
+    // Add "Last" button
+    if (currentPage < totalPages) {
+        let lastBtn = document.createElement('button');
+        lastBtn.innerText = "Last >>";
+        lastBtn.onclick = () => goToPage(totalPages);
+        buttons_div.append(lastBtn);
+    }
+}
+
+// Function to fetch and display data for the selected page
+let goToPage = async (page) => {
+    currentPage = page; // Update the current page
+    try {
+        // Fetch data for the selected page
+        let res = await fetch(`http://localhost:3000/api/todo?_page=${page}&_limit=4`);
+        let data = await res.json();
+
+        // Render the fetched data
+        renderDom(data);
+
+        // Update the pagination buttons
+        showButtons();
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+};
+
+
+// Initialize Pagination
+goToPage(1);
 //CRUD :- Create(POST),Read(GET),Update(PUT & PATCH),Delete(REMOVE);
 //PUT(Replace) :- it will remove entire existing data and put new data there
 //PATCH(Modify):- it will change only particular data like status:- above i shown

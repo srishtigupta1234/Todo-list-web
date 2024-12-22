@@ -44,7 +44,7 @@ button#add_todo {
     padding: 10px 20px;
     font-size: 1rem;
     color: #fff;
-    background: #9d4edd;
+    background: linear-gradient(45deg, #6a11cb, #6b5873);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -52,7 +52,9 @@ button#add_todo {
 }
 
 button#add_todo:hover {
-    background: #72147e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(45deg, #6a11cb, #6b5873);
 }
 
 /* Task Container */
@@ -128,4 +130,78 @@ button#add_todo:hover {
 
 #box button:nth-child(5):hover {
     background: #c13b45;
+}
+
+
+/* Style and position the container holding the input and buttons */
+div {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Add spacing between elements */
+    margin-bottom: 20px; /* Add spacing below the container */
+}
+
+/* Specific styling for the Sort button */
+.sort-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(45deg, #6a11cb, #6b5873);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sort-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.sort-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the container holding the buttons */
+#buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    justify-content: center; /* Center the buttons */
+}
+
+/* Style the dynamic buttons */
+#buttons button {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #ff512f, #dd2476);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+/* Hover effect for buttons */
+#buttons button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(45deg, #dd2476, #ff512f);
+}
+
+/* Active effect for buttons */
+#buttons button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure buttons are responsive */
+#buttons button {
+    min-width: 40px;
+    text-align: center;
 }
